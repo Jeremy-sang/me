@@ -338,16 +338,33 @@ export default function HomeScrollStage({ children }) {
       }
     }
 
+    function handleBackToTop() {
+      if (!isDesktopScroll()) return
+
+      window.clearTimeout(releaseTimerRef.current)
+      isAnimatingRef.current = false
+      activeIndexRef.current = 0
+      internalIndexRef.current = internalStepsRef.current.map(() => 0)
+      panelsRef.current.forEach((panel) => {
+        setPanelTransition(panel, false)
+        resetInternalMotion(panel)
+      })
+      applyPanelState()
+      syncScrollPosition()
+    }
+
     desktopQueryRef.current = window.matchMedia('(min-width: 901px)')
     handleResizeMode()
 
     window.addEventListener('wheel', handleWheel, { passive: false })
     window.addEventListener('resize', handleResizeMode)
+    window.addEventListener('jeremy:back-to-top', handleBackToTop)
 
     return () => {
       window.clearTimeout(releaseTimerRef.current)
       window.removeEventListener('wheel', handleWheel)
       window.removeEventListener('resize', handleResizeMode)
+      window.removeEventListener('jeremy:back-to-top', handleBackToTop)
       disableScrollStage()
     }
   }, [])

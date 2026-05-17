@@ -82,6 +82,10 @@ a {
   transform: rotate(10deg);
 }
 
+.app-shell {
+  min-height: 100vh;
+}
+
 #app,
 #app > div {
   min-height: 100vh;
@@ -296,9 +300,66 @@ h3 {
 .sub-nav-cta:focus-visible,
 .text-link:focus-visible,
 .theme-toggle:focus-visible,
-.brand-mark:focus-visible {
+.brand-mark:focus-visible,
+.back-to-top:focus-visible {
   outline: 2px solid var(--focus-blue);
   outline-offset: 3px;
+}
+
+.back-to-top {
+  align-items: center;
+  appearance: none;
+  background: rgb(210 210 215 / 82%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgb(255 255 255 / 58%);
+  border-radius: 9999px;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  color: var(--ink);
+  display: inline-flex;
+  height: 44px;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  right: max(24px, env(safe-area-inset-right));
+  transform: translate3d(0, 12px, 0) scale(0.96);
+  transition: opacity 180ms ease, transform 180ms ease, background-color 160ms ease, color 160ms ease;
+  width: 44px;
+  z-index: 1100;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.back-to-top:hover {
+  background: var(--action-blue);
+  color: #ffffff;
+}
+
+.back-to-top:active {
+  transform: translate3d(0, 0, 0) scale(0.94);
+}
+
+.back-to-top svg {
+  display: block;
+  height: 22px;
+  width: 22px;
+}
+
+.back-to-top path {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.35;
+}
+
+.route-home .back-to-top {
+  bottom: max(124px, calc(100px + env(safe-area-inset-bottom) + 24px));
 }
 
 .btn.primary {
@@ -573,6 +634,10 @@ footer {
 }
 
 @media (max-width: 833px) {
+  .route-home .back-to-top {
+    bottom: max(24px, env(safe-area-inset-bottom));
+  }
+
   .nav-links {
     gap: 18px;
   }

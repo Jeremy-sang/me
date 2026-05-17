@@ -19,10 +19,10 @@ export default function HomeIntro({ cards, className = '', ...props }) {
       <div className="fh-intro__inner">
         <div className="fh-intro__text">
           <h2>虽素未谋面，相信我，仅需几分钟，即可「胜似相见」</h2>
-          <p>点击您感兴趣的模块，可快速阅读</p>
+          <p>这是我的创造系统，谈不上有趣但还算有用</p>
         </div>
 
-        <p className="fh-intro__hint">鼠标hover图标选中、转正</p>
+        <p className="fh-intro__hint">灵光一现固然重要，但持之以恒才方的始终</p>
 
         <div className="fh-skill-grid">
           {cards.map((card) => (

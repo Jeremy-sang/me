@@ -1,0 +1,10 @@
+.click-spark-container {
+  width: 100%;
+}
+
+.click-spark-canvas {
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: 2147483646;
+}

@@ -19,7 +19,7 @@ export default function HomeFooter() {
         ))}
       </div>
 
-      <p className="fh-footer__credit">此页面由Jeremy&Cousor AI联合开发</p>
+      <p className="fh-footer__credit">此页面由Jeremy&Codex联合开发</p>
     </footer>
   )
 }
